@@ -17,10 +17,14 @@ public class ElkBusiness {
         utils.writeFileSql(sql);
 
         //Write Conf Logstash
-        utils.writeConf(utils.writeConfLogstash(sql.getResource().getFilename()));
+        utils.writeConf(utils.writeConfLogstash(sql.getResource().getFilename(), ambiente));
 
         //Run Comando Restart Logstash
         utils.runRestarLogstash();
 
+    }
+
+    public String [] retornoQueries(){
+        return utils.listQueries();
     }
 }

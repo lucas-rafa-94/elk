@@ -29,10 +29,10 @@ public class Utils {
                 "}";
     }
 
-    public String writeBody(String pathname, String ambiente){
+    public String writeBody(String pathname){
         String retorno = "";
 
-        if(ambiente.equals("qa")){
+        if(pathname.contains("qa_")){
             retorno = "jdbc {\n" +
                     "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
@@ -43,7 +43,7 @@ public class Utils {
                     "                schedule => \"* * * * *\"\n" +
                     "                type => \""+ pathname.replace(".sql", "")+ "\"\n" +
                     "        }\n";
-        }else if (ambiente.equals("prod")){
+        }else if (pathname.contains("prod_")){
             retorno = "jdbc {\n" +
                     "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
@@ -60,7 +60,13 @@ public class Utils {
         return retorno;
     }
 
-    public String writeConfLogstash(String query){
+    public String [] listQueries(){
+        String[] pathnames;
+        File f = new File("/home/lucas_rfl_santos_94/queries");
+        return f.list();
+    }
+
+    public String writeConfLogstash(String query, String ambiente){
         StringBuilder retorno = new StringBuilder();
 
         retorno.append(writeCabecalho());
@@ -71,7 +77,7 @@ public class Utils {
         pathnames = f.list();
 
         for (String pathname : pathnames) {
-            retorno.append(writeBody(pathname, "prod"));
+            retorno.append(writeBody(pathname));
         }
 
         retorno.append(writeFooter());
@@ -83,7 +89,7 @@ public class Utils {
     public void writeFileSql(MultipartFile sql){
         try{
             byte[] bytes = sql.getBytes();
-            Path path = Paths.get("/home/lucas_rfl_santos_94/queries/" + sql.getResource().getFilename());
+            Path path = Paths.get("/home/lucas_rfl_santos_94/queries/" + sql.getResource().getFilename().replace(" ", "_"));
             Files.write(path, bytes);
         }catch (Exception e){
             e.printStackTrace();
@@ -102,12 +108,6 @@ public class Utils {
     }
 
     public void runRestarLogstash(){
-//        ProcessBuilder builder = new ProcessBuilder();
-//        builder.command("whoami");
-
-//        ProcessBuilder builder2 = new ProcessBuilder();
-//        builder.command("sh /home/lucas_rfl_santos_94/test.sh");
-
 
         try {
             Process process = Runtime.getRuntime().exec("sh /home/lucas_rfl_santos_94/test.sh");
@@ -127,22 +127,5 @@ public class Utils {
             e.printStackTrace();
         }
 
-//        try {
-//            Process process = builder2.start();
-//            BufferedReader reader =
-//                    new BufferedReader(new InputStreamReader(process.getInputStream()));
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//
-//            int exitCode = process.waitFor();
-//            System.out.println("\nExited with error code : " + exitCode);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
     }
 }

@@ -20,8 +20,8 @@ public class ElkController {
     }
 
     @GetMapping("waterfy/elk/queries")
-    public void getQueriesLogstash(){
-
+    public String [] getQueriesLogstash(){
+        return elkBusiness.retornoQueries();
     }
 
     @DeleteMapping("waterfy/elk/queries")
