@@ -105,8 +105,8 @@ public class Utils {
         ProcessBuilder builder = new ProcessBuilder();
         builder.command("whoami");
 
-        ProcessBuilder builder2 = new ProcessBuilder();
-        builder.command("sudo systemctl restart logstash");
+//        ProcessBuilder builder2 = new ProcessBuilder();
+//        builder.command("sudo systemctl restart logstash");
 
         try {
             Process process = builder.start();
@@ -126,22 +126,22 @@ public class Utils {
             e.printStackTrace();
         }
 
-        try {
-            Process process = builder2.start();
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-
-            int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Process process = builder2.start();
+//            BufferedReader reader =
+//                    new BufferedReader(new InputStreamReader(process.getInputStream()));
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//
+//            int exitCode = process.waitFor();
+//            System.out.println("\nExited with error code : " + exitCode);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }
