@@ -12,7 +12,7 @@ public class ElkBusiness {
     @Autowired
     Utils utils;
 
-    public void startProcessIndexLogstashKibana(MultipartFile sql, String ambiente) {
+    public void startProcessIndexLogstashKibana(MultipartFile sql) {
         //Write SQL on Folder
         utils.writeFileSql(sql);
 

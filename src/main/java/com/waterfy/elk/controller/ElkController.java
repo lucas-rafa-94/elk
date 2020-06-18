@@ -15,8 +15,8 @@ public class ElkController {
     ElkBusiness elkBusiness;
 
     @PostMapping("waterfy/elk/queries")
-    public void createQueryLogstash(@RequestParam MultipartFile arquivoSql, @RequestParam String ambiente) throws Exception {
-            elkBusiness.startProcessIndexLogstashKibana(arquivoSql, ambiente);
+    public void createQueryLogstash(@RequestParam MultipartFile arquivoSql) throws Exception {
+            elkBusiness.startProcessIndexLogstashKibana(arquivoSql);
     }
 
     @GetMapping("waterfy/elk/queries")
