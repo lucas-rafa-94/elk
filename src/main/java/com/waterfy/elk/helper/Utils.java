@@ -39,7 +39,7 @@ public class Utils {
                     "                jdbc_connection_string => \"jdbc:postgresql://35.209.67.7:5432/gmas-prod\"\n" +
                     "                jdbc_user => \"customerfy\"\n" +
                     "                jdbc_password => \"Customerfy@2020#\"\n" +
-                    "                statement_filepath => \"/home/lucas_rfl_santos_94/queries" +pathname+ "\"\n" +
+                    "                statement_filepath => \"/home/lucas_rfl_santos_94/queries/" +pathname+ "\"\n" +
                     "                schedule => \"* * * * *\"\n" +
                     "                type => \""+ pathname.replace(".sql", "")+ "\"\n" +
                     "        }\n";
@@ -64,6 +64,19 @@ public class Utils {
         String[] pathnames;
         File f = new File("/home/lucas_rfl_santos_94/queries");
         return f.list();
+    }
+
+    public void deleteQuery(String arquivo){
+        String[] pathnames;
+        File f = new File("/home/lucas_rfl_santos_94/queries");
+        pathnames = f.list();
+
+        for(int i = 0; i < pathnames.length; i++){
+            if (arquivo.equals(pathnames[i])){
+                File fDel = new File("/home/lucas_rfl_santos_94/queries/" + arquivo);
+                fDel.delete();
+            }
+        }
     }
 
     public String writeConfLogstash(String query, String ambiente){

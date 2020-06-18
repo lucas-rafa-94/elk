@@ -25,7 +25,7 @@ public class ElkController {
     }
 
     @DeleteMapping("waterfy/elk/queries")
-    public void deleteQueryLogstash(){
-
+    public void deleteQueryLogstash(@RequestParam String nomeArquivo){
+        elkBusiness.deleteQuery(nomeArquivo);
     }
 }

@@ -27,4 +27,8 @@ public class ElkBusiness {
     public String [] retornoQueries(){
         return utils.listQueries();
     }
+
+    public void deleteQuery(String arquivo){
+            utils.deleteQuery(arquivo);
+    }
 }
