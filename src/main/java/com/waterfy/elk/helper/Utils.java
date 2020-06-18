@@ -105,11 +105,12 @@ public class Utils {
         ProcessBuilder builder = new ProcessBuilder();
         builder.command("whoami");
 
-        ProcessBuilder builder2 = new ProcessBuilder();
-        builder.command("sh /home/lucas_rfl_santos_94/test.sh");
+//        ProcessBuilder builder2 = new ProcessBuilder();
+//        builder.command("sh /home/lucas_rfl_santos_94/test.sh");
+
 
         try {
-            Process process = builder.start();
+            Process process = Runtime.getRuntime().exec("sh /home/lucas_rfl_santos_94/test.sh");
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
