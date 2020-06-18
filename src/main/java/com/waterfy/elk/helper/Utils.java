@@ -79,7 +79,7 @@ public class Utils {
         }
     }
 
-    public String writeConfLogstash(String query, String ambiente){
+    public String writeConfLogstash(){
         StringBuilder retorno = new StringBuilder();
 
         retorno.append(writeCabecalho());

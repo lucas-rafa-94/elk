@@ -17,7 +17,7 @@ public class ElkBusiness {
         utils.writeFileSql(sql);
 
         //Write Conf Logstash
-        utils.writeConf(utils.writeConfLogstash(sql.getResource().getFilename(), ambiente));
+        utils.writeConf(utils.writeConfLogstash());
 
         //Run Comando Restart Logstash
         utils.runRestarLogstash();
@@ -30,5 +30,6 @@ public class ElkBusiness {
 
     public void deleteQuery(String arquivo){
             utils.deleteQuery(arquivo);
+            utils.writeConf(utils.writeConfLogstash());
     }
 }
