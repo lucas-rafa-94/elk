@@ -43,7 +43,7 @@ public class Utils {
                     "                schedule => \"*/2 * * * *\"\n" +
                     "                use_column_value => true \"\n" +
                     "                tracking_column => \"id\"\n" +
-                    "                type => \""+ pathname.replace(".sql", "")+ "\"\n" +
+                    "                type => \""+ new String(pathname.replace(".sql", "")+"_prod")+ "\"\n" +
                     "        }\n";
 
         return retorno;
