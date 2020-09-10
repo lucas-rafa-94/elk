@@ -25,6 +25,7 @@ public class Utils {
                 "        elasticsearch {\n" +
                 "                hosts => \"http://localhost:9200\"\n" +
                 "                index => \"%{type}\"\n" +
+                "                document_id => \"%{id}\"\n" +
                 "        }\n" +
                 "}";
     }
@@ -32,7 +33,6 @@ public class Utils {
     public String writeBody(String pathname){
         String retorno = "";
 
-        if(pathname.contains("qa_")){
             retorno = "jdbc {\n" +
                     "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
@@ -40,22 +40,11 @@ public class Utils {
                     "                jdbc_user => \"customerfy\"\n" +
                     "                jdbc_password => \"Customerfy@2020#\"\n" +
                     "                statement_filepath => \"/home/lucas_rfl_santos_94/queries/" +pathname+ "\"\n" +
-                    "                schedule => \"* * * * *\"\n" +
+                    "                schedule => \"*/2 * * * *\"\n" +
+                    "                use_column_value => true \"\n" +
+                    "                tracking_column => \"id\"\n" +
                     "                type => \""+ pathname.replace(".sql", "")+ "\"\n" +
                     "        }\n";
-        }else if (pathname.contains("prod_")){
-            retorno = "jdbc {\n" +
-                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
-                    "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
-                    "                jdbc_connection_string => \"jdbc:postgresql://35.208.103.135:5432/gmas-prod\"\n" +
-                    "                jdbc_user => \"customerfy\"\n" +
-                    "                jdbc_password => \"Customerfy@2020#\"\n" +
-                    "                statement_filepath => \"/home/lucas_rfl_santos_94/queries/" +pathname+ "\"\n" +
-                    "                schedule => \"* * * * *\"\n" +
-                    "                type => \""+ pathname.replace(".sql", "")+ "\"\n" +
-                    "        }\n";
-        }
-
 
         return retorno;
     }
@@ -123,7 +112,7 @@ public class Utils {
     public void runRestarLogstash(){
 
         try {
-            Process process = Runtime.getRuntime().exec("sh /home/lucas_rfl_santos_94/test.sh");
+            Process process = Runtime.getRuntime().exec("sh /home/lucas_rfl_santos_94/restart.sh");
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
