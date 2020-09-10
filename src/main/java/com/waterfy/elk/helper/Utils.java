@@ -32,7 +32,7 @@ public class Utils {
 
     public String writeBody(String pathname){
         String retorno = "";
-
+            String nomeArq = pathname.replace(".sql", "") + "_prod";
             retorno = "jdbc {\n" +
                     "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
@@ -41,9 +41,9 @@ public class Utils {
                     "                jdbc_password => \"Customerfy@2020#\"\n" +
                     "                statement_filepath => \"/home/lucas_rfl_santos_94/queries/" +pathname+ "\"\n" +
                     "                schedule => \"*/2 * * * *\"\n" +
-                    "                use_column_value => true \"\n" +
+                    "                use_column_value => true \n" +
                     "                tracking_column => \"id\"\n" +
-                    "                type => \""+ new String(pathname.replace(".sql", "")+"_prod")+ "\"\n" +
+                    "                type => \""+ nomeArq+ "\"\n" +
                     "        }\n";
 
         return retorno;
