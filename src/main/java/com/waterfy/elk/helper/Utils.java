@@ -36,7 +36,7 @@ public class Utils {
             retorno = "jdbc {\n" +
                     "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
-                    "                jdbc_connection_string => \"jdbc:postgresql://35.208.103.135:6432/gmas-prod\"\n" +
+                    "                jdbc_connection_string => \"jdbc:postgresql://35.208.103.135:5432/gmas-prod\"\n" +
                     "                jdbc_user => \"customerfy\"\n" +
                     "                jdbc_password => \"Customerfy@2020#\"\n" +
                     "                statement_filepath => \"/home/lucas_rfl_santos_94/queries/" +pathname+ "\"\n" +
