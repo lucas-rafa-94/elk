@@ -1,0 +1,11 @@
+db:
+  prod:
+    url: jdbc:postgresql://35.208.103.135:6432/gmas-prod
+    user: customerfy
+    pass: Customerfy@2020#
+  qa:
+    url: jdbc:postgresql://35.208.103.135:6432/gmas-prod
+    user: customerfy
+    pass: Customerfy@2020#
+dir:
+  logstash: /etc/logstash/conf.d
