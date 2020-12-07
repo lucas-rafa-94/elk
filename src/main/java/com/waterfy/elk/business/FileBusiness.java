@@ -24,7 +24,7 @@ public class FileBusiness {
     @Async
     public void writeFileDb(){
         try {
-            Path path = Paths.get(System.getProperty("user.dir"), "db.json");
+            Path path = Paths.get("/home/lucas_rfl_santos_94/elk/db.json");
             String dbValues = new Gson().toJson(elkQueryService.findAll());
             Files.write(path, dbValues.getBytes(), StandardOpenOption.CREATE);
         }catch (Exception e){
@@ -34,7 +34,7 @@ public class FileBusiness {
 
     public boolean deleteFileDb(){
         try {
-            File myObj = new File(System.getProperty("user.dir") + "/db.json");
+            File myObj = new File("/home/lucas_rfl_santos_94/elk/db.json");
             if (myObj.delete()){
                 return true;
             }else{
