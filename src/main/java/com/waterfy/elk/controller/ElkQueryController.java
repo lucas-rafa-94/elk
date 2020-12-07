@@ -17,6 +17,7 @@ public class ElkQueryController {
     @Autowired
     ElkQueryBusiness elkQueryBusiness;
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @PostMapping("/query")
     public ResponseEntity<Object> saveQuery(
             @RequestBody ElkQueryModel elkQueryModel
@@ -27,6 +28,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @PostMapping("/losgstash/restart")
     public ResponseEntity<Object> refreshLogstash(){
         log.info(String.format("Request refreshLogstash()"));
@@ -35,6 +37,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @PutMapping("/query")
     public ResponseEntity<Object> updateQuery(
             @RequestBody ElkQueryModel elkQueryModel
@@ -45,6 +48,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @DeleteMapping("/query/{idQuery}")
     public ResponseEntity<Object> deleteQuery(
             @PathVariable long idQuery
@@ -55,6 +59,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @PostMapping("/csv")
     public ResponseEntity<Object> saveCsv(
             @RequestParam String headers,
@@ -67,6 +72,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @PutMapping("/csv")
     public ResponseEntity<Object> updateCsv(
             @RequestParam long id,
@@ -80,6 +86,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @GetMapping("/query")
     public ResponseEntity<Object> findAllQuery(){
         log.info(String.format("Request findAllQuery()"));
@@ -88,6 +95,7 @@ public class ElkQueryController {
         return obj;
     }
 
+    @CrossOrigin(origins = "https://elk-dash.waterfy.net/")
     @GetMapping("/csv")
     public ResponseEntity<Object> findAllCsvs(){
         log.info(String.format("Request findAllCsvs()"));
