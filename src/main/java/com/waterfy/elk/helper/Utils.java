@@ -65,7 +65,7 @@ public class Utils {
         }else if(scheduleEnums.equals(ScheduleEnums.SEISHORAS)){
             return "0 */6 * * *";
         }else if(scheduleEnums.equals(ScheduleEnums.DIARIO)){
-            return "0 */6 * * *";
+            return "0 */12 * * *";
         }else {
             return "0 */12 * * *";
         }
