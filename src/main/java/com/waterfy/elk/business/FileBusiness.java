@@ -48,7 +48,7 @@ public class FileBusiness {
 
     public ElkQueryModel[] readFileDb() throws Exception{
         try {
-            Path path = Paths.get(System.getProperty("user.dir"), "db.json");
+            Path path = Paths.get("/home/lucas_rfl_santos_94/elk/db.json");
             byte[] data = Files.readAllBytes(path);
             return new Gson().fromJson(new String(data), ElkQueryModel[].class);
         }catch (Exception e){
