@@ -4,6 +4,7 @@ import com.waterfy.elk.model.ElkQueryModel;
 import com.waterfy.elk.model.enums.BancoDeDadosEnum;
 import com.waterfy.elk.model.enums.ScheduleEnums;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,14 +24,14 @@ public class Utils {
     public String dbUrlProd;
     @Value("${db.prod.user}")
     public String dbUrlUserProd;
-    @Value("${db.prod.user}")
+    @Value("${db.prod.pass}")
     public String dbUrlPassProd;
 
     @Value("${db.qa.url}")
     public String dbUrlQa;
     @Value("${db.qa.user}")
     public String dbUrlUserQa;
-    @Value("${db.qa.user}")
+    @Value("${db.qa.pass}")
     public String dbUrlPassQa;
 
     @Value("${dir.logstash}")
@@ -180,6 +181,7 @@ public class Utils {
         }
     }
 
+    @Async
     public void runRestarLogstash(){
 
         try {
