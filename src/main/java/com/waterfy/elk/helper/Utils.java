@@ -47,6 +47,7 @@ public class Utils {
                 "        elasticsearch {\n" +
                 "                hosts => \"http://localhost:9200\"\n" +
                 "                index => \"%{type}\"\n" +
+                "                document_id => \"%{id}\"\n" +
                 "        }\n" +
                 "}";
     }
@@ -69,33 +70,34 @@ public class Utils {
         }
     }
 
-    public String writeBodyQuery(ElkQueryModel elkQueryModel){
+    public String writeBodyQuery(ElkQueryModel elkQueryModel) {
         String retorno = "";
-        if(elkQueryModel.getDatabase().name().equals(BancoDeDadosEnum.PRODUCAO.name())){
-                retorno = "jdbc {\n" +
-                        "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
-                        "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
-                        "                jdbc_connection_string => \"" +dbUrlProd+ "\"\n" +
-                        "                jdbc_user => \"" +dbUrlUserProd+ "\"\n" +
-                        "                jdbc_password => \"" +dbUrlPassProd+ "\"\n" +
-                        "                statement => \"" +elkQueryModel.getQuery()+ "\"\n" +
-                        "                schedule => \"" +scheduleToString(elkQueryModel.getSchedule())+ "\"\n" +
-                        "                type => \""+ elkQueryModel.getNomeIndex().replace(" ", "_")+ "\"\n" +
-                        "        }\n";
-        }else{
-                retorno = "jdbc {\n" +
-                        "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
-                        "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
-                        "                jdbc_connection_string => \"" +dbUrlQa+ "\"\n" +
-                        "                jdbc_user => \"" +dbUrlUserQa+ "\"\n" +
-                        "                jdbc_password => \"" +dbUrlPassQa+ "\"\n" +
-                        "                statement => \"" +elkQueryModel.getQuery()+ "\"\n" +
-                        "                schedule => \"" +scheduleToString(elkQueryModel.getSchedule())+ "\"\n" +
-                        "                type => \""+ elkQueryModel.getNomeIndex().replace(" ", "_")+ "\"\n" +
-                        "        }\n";
+        if (elkQueryModel.getDatabase().name().equals(BancoDeDadosEnum.PRODUCAO.name())) {
+            retorno = "jdbc {\n" +
+                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
+                    "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
+                    "                jdbc_connection_string => \"" + dbUrlProd + "\"\n" +
+                    "                jdbc_user => \"" + dbUrlUserProd + "\"\n" +
+                    "                jdbc_password => \"" + dbUrlPassProd + "\"\n" +
+                    "                statement => \"" + elkQueryModel.getQuery() + "\"\n" +
+                    "                schedule => \"" + scheduleToString(elkQueryModel.getSchedule()) + "\"\n" +
+                    "                type => \"" + elkQueryModel.getNomeIndex().replace(" ", "_") + "\"\n" +
+                    "        }\n";
+        } else {
+            retorno = "jdbc {\n" +
+                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
+                    "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
+                    "                jdbc_connection_string => \"" + dbUrlQa + "\"\n" +
+                    "                jdbc_user => \"" + dbUrlUserQa + "\"\n" +
+                    "                jdbc_password => \"" + dbUrlPassQa + "\"\n" +
+                    "                statement => \"" + elkQueryModel.getQuery() + "\"\n" +
+                    "                schedule => \"" + scheduleToString(elkQueryModel.getSchedule()) + "\"\n" +
+                    "                type => \"" + elkQueryModel.getNomeIndex().replace(" ", "_") + "\"\n" +
+                    "        }\n";
         }
         return retorno;
     }
+
 
     public String writeBodyCsv(ElkQueryModel elkQueryModel){
         String retorno = "file {\n" +
