@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.sql.DatabaseMetaData;
 import java.util.List;
 
 @Log
@@ -253,7 +252,7 @@ public class ElkQueryBusiness {
 
             List<ElkQueryModel> elkQueryModelsCsv =  elkQueryService.findByTipoUpload(TipoUploadEnum.CSV);
 
-            FileUtils.cleanDirectory(new File(System.getProperty("user.dir") + "/conf/csv/"));
+            FileUtils.cleanDirectory(new File("/home/lucas_rfl_santos_94/csv/"));
 
             for (int i = 0; i < elkQueryModelsCsv.size(); i ++){
                 utils.writeConfCsv(elkQueryModelsCsv.get(i).getNomeIndex(), utils.writeConfLogstashCsv(elkQueryModelsCsv.get(i)));

@@ -149,7 +149,7 @@ public class Utils {
         try{
             byte[] bytes = csv.getBytes();
 //            Path path = Paths.get("/home/lucas_rfl_santos_94/csv/" + sql.getResource().getFilename().replace(" ", "_"));
-            Path path = Paths.get("/home/lucas_rfl_santos_94/csv/ " + nomeIndex);
+            Path path = Paths.get("/home/lucas_rfl_santos_94/csv/" + nomeIndex);
             Files.write(path, bytes);
             return path.toString();
         }catch (Exception e){
