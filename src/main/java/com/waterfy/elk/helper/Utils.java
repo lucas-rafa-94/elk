@@ -94,7 +94,7 @@ public class Utils {
                     "                jdbc_user => \"" + dbUrlUserQa + "\"\n" +
                     "                jdbc_password => \"" + dbUrlPassQa + "\"\n" +
                     "                statement => \"" + elkQueryModel.getQuery() + "\"\n" +
-                    "                use_column_value => true \"\n" +
+                    "                use_column_value => true \n" +
                     "                tracking_column => \"" + "id" + "\"\n" +
                     "                schedule => \"" + scheduleToString(elkQueryModel.getSchedule()) + "\"\n" +
                     "                type => \"" + elkQueryModel.getNomeIndex().replace(" ", "_") + "\"\n" +
