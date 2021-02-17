@@ -75,7 +75,7 @@ public class Utils {
         String retorno = "";
         if (elkQueryModel.getDatabase().name().equals(BancoDeDadosEnum.PRODUCAO.name())) {
             retorno = "jdbc {\n" +
-                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
+                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jre6.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
                     "                jdbc_connection_string => \"" + dbUrlProd + "\"\n" +
                     "                jdbc_user => \"" + dbUrlUserProd + "\"\n" +
@@ -88,7 +88,7 @@ public class Utils {
                     "        }\n";
         } else {
             retorno = "jdbc {\n" +
-                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jar\"\n" +
+                    "                jdbc_driver_library => \"/home/lucas_rfl_santos_94/postgresql-42.2.14.jre6.jar\"\n" +
                     "                jdbc_driver_class => \"org.postgresql.Driver\"\n" +
                     "                jdbc_connection_string => \"" + dbUrlQa + "\"\n" +
                     "                jdbc_user => \"" + dbUrlUserQa + "\"\n" +
